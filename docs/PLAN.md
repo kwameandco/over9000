@@ -86,13 +86,18 @@ with a direct USPTO TESS search before committing hard to the name).
 
 ## 5. Phased build
 
-- **Phase 0 — foundations.** Repo scaffold (still in `clients/side-projects/`), Next 16
-  static export, Tailwind, CF Workers deploy pipeline, `site.config.ts` (swappable brand),
-  privacy page, disclaimer footer.
-- **Phase 1 — the scan (MVP).** Photo upload pipeline → manual reticle placement → scan
-  animation (CSS + GSAP) → power level from whatever stats are entered (or a cheeky
-  low-confidence guess from nothing) → HUD render → export/share. Scouter colour picker
-  (green default / red / blue / purple). Static OG card.
+- **Phase 0 — foundations. ✅ DONE 2026-08-10.** Next 16 `output:'export'` scaffold,
+  Tailwind v4 CRT/arcade design system, `site.config.ts` (swappable brand), `netlify.toml`,
+  disclaimer + privacy copy in footer. (Standalone privacy page still to come.)
+- **Phase 1 — the scan (MVP). 🟡 CORE SHIPPED 2026-08-10.** Working: attract screen
+  (PRESS START unlocks Web Audio, keyboard support, Hall of Legends top-5), photo upload →
+  tap-to-place reticle → scan animation (sweep, glyph flicker, beeping count-up, lock-on) →
+  seeded canon-scale power level + flavour + confidence → canvas share-card export
+  (Web Share files / download, EXIF stripped) → Hall of Legends initials save. Verified
+  in-browser via Playwright against the static build (deterministic rescan confirmed).
+  Remaining for Phase 1 complete: scouter colour picker (red/blue/purple skins), HEIC
+  fallback (lazy heic2any), static OG card image, GSAP sequencing polish if CSS/rAF ever
+  feels limiting.
 - **Phase 2 — the stats engine.** Full test catalogue input UI, two-layer scoring,
   category radar, scan confidence %, stat display toggles, localStorage save, unit toggle,
   validation + malfunction copy.
@@ -112,7 +117,23 @@ Migrated from `kwameandco/clients/side-projects/supersaiyan/` to its own repo
 **`kwameandco/over9000`** on 2026-08-10 (docs moved; planning history stays in the
 clients repo). This repo is the single source of truth now.
 
-## 7. Open questions for the K interview
+## 7. Interview outcomes (2026-08-10) — all questions answered
+
+| Decision | Outcome |
+|---|---|
+| Brand | **OVER 9000** (domain to acquire — over9000.me or similar; supersaiyan.me optional vanity redirect later). Brand stays swappable in `site.config.ts`. |
+| Framework | **Next 16 `output: 'export'`**, TypeScript, Tailwind v4, React 19 |
+| Hosting | **Netlify free tier** (K's call; static export stays 100% portable so a lift to Cloudflare later is config-only) |
+| Art direction | **Arcade attract mode** — PRESS START attract screen, chunky bevel buttons, CRT scanlines native to the whole cabinet; Geocities/shrine garnish confined to the footer |
+| Bare scan | Cheeky low-confidence read — number seeded from the image (stable per photo), `CONFIDENCE: 12% — SUBJECT UNVERIFIED`, insult-tier flavour, "ADD COMBAT DATA" upsell |
+| Power curve | **Canon base + transforms go nuclear** — humans read 5–low-thousands untransformed; only transformations pass 9000, which is when the scouter shatters (earned, not free) |
+| Sex/age | Optional dropdowns with generic default + `CALIBRATION: DEFAULT` readout note |
+| Sound | **PRESS START unlocks Web Audio** — synthesised beeps/coin blips/shatter crunch (no audio files, no rips); persistent ON/OFF toggle in localStorage |
+| v1 stats scope | **All four groups**: strength core (IPF GL), bodyweight basics, speed & power, endurance |
+| Footer garnish | Yes — seeded hit counter, badge wall, under-construction GIFs, shrine-style updates log |
+| High scores | Yes — "HALL OF LEGENDS", localStorage top-10 with 3-letter arcade initials |
+
+## 7b. Original interview questions (kept for the record)
 
 1. **Framework:** Next 16 static export (recommended: home turf) or Vite+React (lighter
    toolchain, new toy)?
@@ -141,3 +162,9 @@ clients repo). This repo is the single source of truth now.
   fitness scoring, tech/IP); plan drafted. No code yet — pending interview.
 - 2026-08-10 — Migrated to own repo `kwameandco/over9000` (moved, not copied — removed
   from clients). K directive: real 90s/2000s aesthetic; remaining decisions via interview.
+- 2026-08-10 — Interview complete (3 rounds, all §7 outcomes above). Headline calls:
+  brand = OVER 9000; arcade-attract-mode art direction; Netlify hosting; canon power
+  curve with transformation-only limit breaks; all four stat groups in v1. Build starts.
+- 2026-08-10 — Phase 0 shipped + Phase 1 core shipped (attract → scan → result → export →
+  hall). Stack as decided: Next 16.3 export / React 19.2 / Tailwind 4.3 / TS 7. All audio
+  synthesised in-code. QA'd via Playwright on the static build; `npm run build` green.

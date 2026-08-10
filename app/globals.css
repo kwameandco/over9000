@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Phosphor greens — the scouter/CRT core palette */
+  --color-phosphor: #35ff6d;
+  --color-phosphor-bright: #9dffb8;
+  --color-phosphor-dim: #1d9a45;
+  --color-phosphor-dark: #0c3a1c;
+  --color-crt-black: #040a05;
+
+  /* Cabinet + marquee — arcade accents */
+  --color-cabinet: #0c0c14;
+  --color-bezel: #1c1c2a;
+  --color-marquee-pink: #ff2bd6;
+  --color-marquee-cyan: #23e0ee;
+  --color-marquee-yellow: #ffe600;
+  --color-alert: #ff3b30;
+
+  --font-arcade: var(--font-press-start);
+  --font-crt: var(--font-vt323);
+
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+  --animate-blink-fast: blink 0.35s steps(2, start) infinite;
+  --animate-sweep: sweep 1.6s linear infinite;
+  --animate-shake: shake 0.35s linear infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    top: -12%;
+  }
+  100% {
+    top: 108%;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2px, 1px);
+  }
+  50% {
+    transform: translate(2px, -1px);
+  }
+  75% {
+    transform: translate(-1px, -2px);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.6;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.8;
+  }
+}
+
+/* The CRT screen: scanlines + vignette + subtle flicker. Apply to a
+   position-relative container; children sit under the overlay. */
+.crt {
+  position: relative;
+  background: var(--color-crt-black);
+  animation: flicker 6s linear infinite;
+}
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.28) 3px
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 58%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+/* Phosphor glow for CRT text */
+.glow {
+  text-shadow:
+    0 0 6px color-mix(in srgb, var(--color-phosphor) 65%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-phosphor) 30%, transparent);
+}
+.glow-pink {
+  text-shadow:
+    0 0 6px color-mix(in srgb, var(--color-marquee-pink) 70%, transparent),
+    0 0 20px color-mix(in srgb, var(--color-marquee-pink) 35%, transparent);
+}
+
+/* Chunky Web-1.0 bevel — buttons and panels */
+.bevel {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #3a3a52 #14141f #14141f #3a3a52;
+}
+.bevel:active {
+  border-color: #14141f #3a3a52 #3a3a52 #14141f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--color-cabinet);
+  color: var(--color-phosphor);
+}
