@@ -368,3 +368,160 @@ differentiator, and the shatter beat is the shareable money shot.
 ### Bundle budget
 First-load JS beyond framework: **well under 50 kB gz** (GSAP core + d3-delaunay);
 heic2any (~2.7 MB) and MediaPipe (MBs) strictly lazy-loaded on demand. Hosting cost £0.
+
+---
+
+## 7. Power-level formula bank (researched 2026-08-10)
+
+Every published, defensible way to turn self-reportable inputs into watts/joules/kcal
+or a composite. The killer insight: **"power level" can be literal WATTS** — real physics,
+real formulas, and real humans genuinely produce four-to-five-digit numbers.
+
+### 7.1 Jump power (vertical jump + body mass → watts)
+- **Sayers (1999) — the modern default:** `Peak W = 60.7×jump(cm) + 45.3×mass(kg) − 2055`
+  (r≈0.91 vs force plate). 80 kg + 45 cm jump → **4,301 W**; NBA-level 86 cm → **6,790 W**.
+- Harman (1991): `Peak W = 61.9×jump + 36.0×mass + 1822`; also mean-power variant.
+- Johnson & Bahamonde (1996) adds standing height (countermovement):
+  `Peak W = 78.6×VJ + 60.3×mass − 15.3×height(cm) − 1308`.
+- **Lewis (1974)** underestimates ~2× — perfect as a joke "OLD SCOUTER FIRMWARE" mode.
+- Sources: [Sayers paper](https://pubmed.ncbi.nlm.nih.gov/10211854/), [Topend calculator](https://www.topendsports.com/testing/vertical-jump-power.htm)
+
+### 7.2 Cycling / rowing
+- **FTP direct entry** — already watts. Coggan W/kg ladder = ready-made tier list:
+  untrained 1.5–2.5 → recreational 3.3–3.7 → Cat 1 ~5.0 → World Tour 5.8–6.4+ (Pogačar ~7.1).
+- **Concept2 rowing:** `Watts = 2.80 / pace³` (pace = split-seconds/500). 2:00 split → 203 W.
+- **Wingate 30 s:** college male mean peak **699.5 W** (9.18 W/kg); >11 W/kg elite.
+
+### 7.3 Running
+- **ECOR model:** `P(W) ≈ 1.04 × mass(kg) × speed(m/s)` flat-ground (Stryd-adjacent).
+  80 kg @ 5:00/km → 277 W. Full version adds `0.5×ρ×CdA×v³` drag.
+- **ACSM textbook:** `VO2 = 0.2×speed + 0.9×speed×grade + 3.5` (m/min) → chain to watts.
+
+### 7.4 Strength → energy (pure physics, CSCS-exam grade)
+- `Work(J) = mass × 9.81 × ROM(m)`; `Power(W) = Work / rep seconds`.
+  100 kg bench × 0.40 m ROM = **392 J/rep**; 0.8 s concentric → ~490 W.
+  Hardcode ROMs: bench ~0.40 m, squat ~0.55–0.65 m, deadlift ~0.50 m (scale by height).
+- VBT anchor: optimum mean propulsive power at bar speed ≈ 1.0 m/s →
+  shortcut `P ≈ load × 9.81 × 1.0` at ~40–70% 1RM.
+
+### 7.5 Punch (the silly-wattage printer)
+- `E = ½ × m_eff × v²`; `P = E / contact time`. Fist+forearm ~2.5–4 kg, elite hand speed
+  9–11 m/s, contact ~10–30 ms → 4 kg @ 10 m/s = 200 J → **10,000 W instantaneous**.
+- Force benchmarks: untrained jab ~1,000 N; pro cross ~4,500 N; elite heavyweight >6,000 N.
+- Arcade punch machines: no standard unit, vibes-only input. PowerKube "Franklin" unit
+  proprietary — don't clone.
+
+### 7.6 Metabolic (the body as a power plant)
+- **Mifflin–St Jeor BMR:** `10×W + 6.25×H(cm) − 5×age + 5` (men) / `− 161` (women).
+- **1 kcal/day = 0.04843 W** → BMR 1,700 kcal = **~82 W idle draw** ("you idle like a
+  lightbulb"). TDEE multipliers ×1.2–×1.9.
+- VO2→watts: 1 L O2/min ≈ 349 W *metabolic*; ×~20–25% gross efficiency for mechanical.
+  1 MET = 1.162 W/kg metabolic.
+
+### 7.7 Composite architecture
+- **RAS (Relative Athletic Score) methodology is public and cloneable:** percentile-rank
+  each metric vs a population, score 0–10, average, re-normalise. This IS our composite
+  layer's architecture (validates the PLAN §3 design).
+- **SPARQ is proprietary** (never published; only community rSPARQ approximations) — use
+  "SPARQ-style" language only, never the name as a formula claim.
+
+### 7.8 Watt anchor ladder (for readouts/flavour)
+| Anchor | Watts |
+|---|---|
+| Human BMR ("idle") | ~80 |
+| Untrained sustained cycling | ~100 |
+| Fit recreational sustained | ~200 |
+| Tour pro 20-min climb | ~450 |
+| Wingate peak, avg college male | ~700 |
+| Tour finishing sprint peak | ~1,500 |
+| Elite track sprinter peak (Hoy) | ~2,500 |
+| **Usain Bolt 100 m WR peak** | **2,619.5** (EJP 2013) |
+| NBA-level Sayers jump | ~6,000–7,000 |
+| Punch, instantaneous | **10,000+** |
+| 1 horsepower | 745.7 |
+
+Honesty note: sprint/jump/punch = *peak instantaneous*; cycling = *sustained*. Mixing them
+is exactly how readings pass 9000 — lean into it deliberately, and label which is which.
+
+### 7.9 Cleanest primitives to implement
+Sayers (jump), Concept2 `2.80/pace³` (row), FTP entry (bike), ECOR `1.04·m·v` (run),
+`m·g·d/t` (lifts), Mifflin–St Jeor × 0.0484 (idle watts). All 1–3 inputs, all output watts.
+
+---
+
+## 8. Fun / creative power-level methods (researched 2026-08-10)
+
+### What existing DBZ tools do (and their lesson)
+- **saiyanwarrior.com** calculator farm: training-level dropdown × transformation
+  multiplier; includes a charming "suppressed (hide from scouters)" toggle. Calculator-
+  shaped, not game-shaped — you type a number, a bigger number comes out.
+- **Quiz genre** (ProProfs/AllTheTests): lifestyle questions → hidden points → tier bucket
+  → character comparison. **Kidzworld variant scores fandom TRIVIA as power** — stealable.
+- **ShindanMaker name-hash genre**: `hash(name)` → stable result, re-seeded daily —
+  "your ki fluctuates each day" is a proven retention mechanic.
+- **2010s scouter camera apps**: overlay + share moment was the whole product, but the
+  number was pure RNG — "no one believes it twice." Lesson: keep the share moment, back
+  the number with something deterministic or measured (exactly our seed approach).
+
+### In-browser measurable tests (no equipment)
+| Test | Norms | Permissions |
+|---|---|---|
+| Reaction time ("dodge the ki blast") | median 273 ms (81M+ clicks, Human Benchmark); <200 ms ≈ top 10% | none |
+| Click/tap speed CPS ("charge your ki" mash) | casual 6–8/s; 9–12 strong | none |
+| Typing WPM | avg ~40–52; 80+ top 15% | none (desktop) |
+| Breath-hold ("suppress your power") | untrained mean ~45 s | none; safety note |
+| Balance via gyroscope ("hold ki steady") | orientation variance | iOS 13+ motion prompt |
+| Scream meter ("charge to Super Saiyan — SCREAM") | relative RMS via Web Audio; absolute dB unreliable | mic prompt — state "nothing recorded/uploaded" |
+| Shake intensity (Kamehameha motion) | rest ≈ 9.8 m/s², shakes spike >20 | iOS motion prompt |
+
+One iOS motion grant covers orientation + motion → single dramatic "CALIBRATE SCOUTER"
+permission moment for balance + shake.
+
+### Questionnaire scoring — multiplicative, not additive
+Give answers MULTIPLIERS, not points: base 5 (farmer) × training × diet × anger ×
+"have you ever moved a car?". Multiplicative scoring natively produces DBZ's exponential
+spread (5 → 1,200 → over 9000). Question archetypes: training frequency (…/ 400× Earth
+gravity), appetite (…/ ate a table of food), feats, combat record vs siblings, Zenkai
+resilience, rage response (…/ my hair flickers gold).
+
+### Absurd-but-deterministic (stable shareable numbers, zero permissions)
+- **Pythagorean numerology, unreduced**: letter values summed then amplified; vowels =
+  "Soul Ki", consonants = "Body Ki" (real numerology convention, re-skinned).
+- **Birthday math**: DOB digits through verifiable arithmetic; master numbers 11/22/33 =
+  "hidden potential".
+- **Zodiac multiplier table** (pop-culture power rankings: Scorpio/Leo/Aries top) —
+  pleasantly controversial, share-thread bait.
+- **Shindan pattern**: `hash(name)` = base level; `hash(name+date)` = today's ±20%
+  fluctuation → daily return visits.
+- **Region toggle Easter egg**: JP/EN switch shifting readings by the 8000/9000 dub ratio.
+
+### Photo-derived signals (client-side canvas, no upload)
+Average brightness/hue → "aura reading" (hue = aura colour, saturation = ki purity);
+Shannon entropy → "chaotic vs suppressed ki"; face-detection confidence = "lock-on %"
+(MediaPipe tasks-vision, ~MB one-time model load; Chrome's native FaceDetector still
+flag-gated 2026 — don't rely on it). Aura-camera apps are prior art doing exactly this
+dressed in mysticism — we do it while in on the joke. Pixel-hash determinism: same photo
+= same level; new crop = "your ki changed".
+
+### Wearable manual entry
+VO2max (Apple "Cardio Fitness"; avg ~29–40, elites 70+ → `VO2²×4` breaks 9000 at 48),
+resting HR (lower = "suppressed power"), HRV ("Zenkai capacity", age-adjusted — Whoop avg
+65 ms, Tour riders ~139), Garmin Fitness Age ("Saiyan age" = real − fitness age). All
+honour-system numbers — "SCOUTER TRUSTS YOU" disclaimer + `LIE DETECTED` egg for VO2 > 90.
+
+### Ranked shortlist (fun-per-effort for our arcade)
+1. Reaction-time scouter (none, offline, hard norms)
+2. Name-hash + daily fluctuation (the zero-permission fallback score + retention)
+3. Multiplicative questionnaire
+4. Tap-speed ki-charge mash
+5. Shake power-up (motion prompt)
+6. Scream meter (mic prompt — funniest mechanic in a browser)
+7. Photo aura scan (deterministic scouter-app moment, done honestly)
+8. Breath-hold suppression test
+9. Wearable stat entry (bridges to the serious engine)
+10. Balance/steadiness test
+
+**Composite suggestion:** 1–4 free-play core (no permissions) · 5–7 behind one "CALIBRATE
+SCOUTER" moment · blend multiplicatively, seeded by name-hash so every scan is stable and
+shareable. Scale anchors: farmer 5 · average human 100–1,000 · 9000 = celebration
+break-point · Frieza 120,000,000 ceiling.

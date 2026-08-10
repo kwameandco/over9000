@@ -23,6 +23,19 @@
   --animate-blink-fast: blink 0.35s steps(2, start) infinite;
   --animate-sweep: sweep 1.6s linear infinite;
   --animate-shake: shake 0.35s linear infinite;
+  --animate-diamond: diamond-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes diamond-pulse {
+  0%,
+  100% {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(45deg) scale(1.08);
+    opacity: 0.85;
+  }
 }
 
 @keyframes blink {

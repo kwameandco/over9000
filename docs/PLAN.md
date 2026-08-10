@@ -95,9 +95,12 @@ with a direct USPTO TESS search before committing hard to the name).
   seeded canon-scale power level + flavour + confidence → canvas share-card export
   (Web Share files / download, EXIF stripped) → Hall of Legends initials save. Verified
   in-browser via Playwright against the static build (deterministic rescan confirmed).
-  Remaining for Phase 1 complete: scouter colour picker (red/blue/purple skins), HEIC
-  fallback (lazy heic2any), static OG card image, GSAP sequencing polish if CSS/rAF ever
-  feels limiting.
+  Remaining for Phase 1 complete: HEIC fallback (lazy heic2any), static OG card image,
+  GSAP sequencing polish if CSS/rAF ever feels limiting.
+  2026-08-10 (later): **scouter-lens restyle shipped** — through-the-lens colour tint,
+  DBZ diamond reticle with ticks, floating PWR readout beside the target, HUD status/glyph/
+  ID blocks, edge rulers, lens colour picker (green/red/blue/purple, persisted), share card
+  restyled to match. ✅ colour picker done.
 - **Phase 2 — the stats engine.** Full test catalogue input UI, two-layer scoring,
   category radar, scan confidence %, stat display toggles, localStorage save, unit toggle,
   validation + malfunction copy.
@@ -153,6 +156,37 @@ clients repo). This repo is the single source of truth now.
    anime-fansite era — and how far to push authenticity vs usability.
 8. **Sex/age inputs:** collect optional sex + age for fair scoring (better numbers, tiny
    privacy surface, stays local) or keep inputs to pure performance?
+
+---
+
+## 8. Power-level method menu (researched 2026-08-10 — awaiting K's picks)
+
+Full detail: RESEARCH.md §7 (real formulas) + §8 (fun methods). Candidate modes:
+
+**A. Real watts ("BATTLE POWER (SI)")** — power level as literal watts from published
+formulas: Sayers jump power (NBA jump ≈ 6,800 W!), Concept2 rowing `2.80/pace³`, FTP
+entry, ECOR running power, lift work `m·g·d/t`, punch energy (10,000 W instantaneous),
+Mifflin–St Jeor BMR ×0.0484 = "idle draw ~82 W". Composite via RAS-style percentile
+averaging (public methodology). Peak-vs-sustained mixing is how readings pass 9000 —
+label it, lean in.
+
+**B. Measured mini-tests (in-browser, verifiable)** — reaction time (median 273 ms),
+tap-speed ki-charge mash, breath-hold suppression, balance hold (gyro), shake power-up
+(accelerometer), scream meter (mic). Last three behind one dramatic "CALIBRATE SCOUTER"
+permission moment.
+
+**C. Deterministic fun (zero friction)** — name-hash base + daily ±20% ki fluctuation
+(retention mechanic), unreduced numerology (vowels = Soul Ki, consonants = Body Ki),
+birthday math, zodiac multiplier table, JP/EN 8000/9000 region-toggle Easter egg.
+
+**D. Multiplicative questionnaire** — base 5 (farmer) × training × appetite × rage ×
+"ever moved a car?" — multiplication natively produces DBZ's exponential number spread.
+
+**E. Photo aura signals** — brightness/hue = aura colour, entropy = ki stability,
+face-lock confidence = "lock-on %" (already have the deterministic pixel-hash seed).
+
+**F. Wearable entry** — VO2max/RHR/HRV/Fitness Age with honour-system "SCOUTER TRUSTS
+YOU" framing + `LIE DETECTED` egg for absurd inputs.
 
 ---
 
